@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Open Art Explorer</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%239a3412'/%3E%3Cpath d='M24 72V28h12l14 20 14-20h12v44H64V50L50 68 36 50v22H24Z' fill='%23fff7ef'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div>
+          <p class="eyebrow">Open Museum Discovery</p>
+          <h1>Open Art Explorer</h1>
+        </div>
+        <p class="header-note">Built on The Met Collection API</p>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Fast MVP</p>
+            <h2>Search artworks without hopping between museum websites.</h2>
+            <p class="hero-text">
+              Browse image-first results, open a calm detail view, and keep
+              exploring through related works from The Metropolitan Museum of Art.
+            </p>
+          </div>
+
+          <form class="search-panel" id="search-form">
+            <label class="search-label" for="search-input">Search artist or keyword</label>
+            <div class="search-row">
+              <input
+                id="search-input"
+                name="query"
+                type="search"
+                placeholder="Try Monet, samurai, still life..."
+                autocomplete="off"
+                required
+              />
+              <button type="submit" id="search-button">Search</button>
+            </div>
+            <div class="chip-row" id="example-chips" aria-label="Example searches">
+              <button type="button" class="chip" data-query="Monet">Monet</button>
+              <button type="button" class="chip" data-query="samurai">samurai</button>
+              <button type="button" class="chip" data-query="still life">still life</button>
+              <button type="button" class="chip" data-query="Van Gogh">Van Gogh</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="results-section">
+          <div class="results-header">
+            <div>
+              <p class="eyebrow">Collection Browser</p>
+              <h3 id="results-title">Featured works to start exploring</h3>
+            </div>
+            <p id="results-summary" class="results-summary">
+              Loading a small set of highlights from The Met.
+            </p>
+          </div>
+
+          <div id="feedback" class="feedback" aria-live="polite"></div>
+          <div id="results-grid" class="results-grid" aria-live="polite"></div>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="artwork-modal" class="artwork-modal">
+      <button
+        type="button"
+        class="modal-close"
+        id="modal-close"
+        aria-label="Close artwork details"
+      >
+        Close
+      </button>
+      <div id="modal-content" class="modal-content"></div>
+    </dialog>
+
+    <template id="card-template">
+      <article class="art-card">
+        <button type="button" class="art-card-button">
+          <div class="art-image-wrap">
+            <img class="art-image" alt="" loading="lazy" />
+          </div>
+          <div class="art-card-copy">
+            <p class="art-source"></p>
+            <h4 class="art-title"></h4>
+            <p class="art-artist"></p>
+            <p class="art-meta"></p>
+          </div>
+        </button>
+      </article>
+    </template>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
